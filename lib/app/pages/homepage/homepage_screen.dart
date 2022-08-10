@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:workwithafridi/app/data/constants/colors.dart';
 import 'package:workwithafridi/app/data/constants/text_style.dart';
 import 'package:workwithafridi/app/pages/homepage/homepage_controller.dart';
 import 'package:workwithafridi/app/pages/homepage/modules/appbar_module.dart';
@@ -26,8 +24,9 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
+          print(constraints.maxWidth.floor().toString());
           return Container(
-            child: constraints.maxWidth < 850
+            child: constraints.maxWidth < 900
                 ? Center(
                     child: Text(
                       "Snap, sorry I didn't optimize the website for this screen size! :(",
@@ -152,27 +151,38 @@ class PublishedPackagesModule extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "SelectCropCompressImage",
-                style: ubuntuTextStyle.copyWith(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                "- A package to select, crop and compress images all through one call. Image selection is done via Image Picker package, Image Cropping is achieved through the Image Copper package and finally the compression is done using the Flutter Image Compress package. ",
-                style: quicksandTextStyle.copyWith(
-                  fontSize: 15,
-                ),
-              )
-            ],
-          )
+          const PublishedPackageCard()
         ],
       ),
+    );
+  }
+}
+
+class PublishedPackageCard extends StatelessWidget {
+  const PublishedPackageCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "SelectCropCompressImage",
+          style: ubuntuTextStyle.copyWith(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          "- A package to select, crop and compress images all through one call. Image selection is done via Image Picker package, Image Cropping is achieved through the Image Copper package and finally the compression is done using the Flutter Image Compress package. ",
+          style: quicksandTextStyle.copyWith(
+            fontSize: 15,
+          ),
+        )
+      ],
     );
   }
 }
@@ -212,25 +222,33 @@ class ShowProjectsModule extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
-          GridView.builder(
+          ListView.builder(
             shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
-            gridDelegate: SliverQuiltedGridDelegate(
-              crossAxisCount: 2,
-              mainAxisSpacing: 0,
-              crossAxisSpacing: 25,
-              pattern: [
-                const QuiltedGridTile(1, 1),
-                const QuiltedGridTile(1, 1),
-              ],
-            ),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: 4,
             itemBuilder: ((context, index) {
               return const ProjectCard();
             }),
           )
+          // GridView.builder(
+          //   shrinkWrap: true,
+          //   physics: const BouncingScrollPhysics(),
+          //   gridDelegate: SliverQuiltedGridDelegate(
+          //     crossAxisCount: 2,
+          //     mainAxisSpacing: 25,
+          //     crossAxisSpacing: 25,
+          //     pattern: [
+          //       const QuiltedGridTile(1, 1),
+          //       const QuiltedGridTile(1, 1),
+          //     ],
+          //   ),
+          //   itemCount: 4,
+          //   itemBuilder: ((context, index) {
+          //     return const ProjectCard();
+          //   }),
+          // )
         ],
       ),
     );
@@ -254,147 +272,169 @@ class _ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: double.maxFinite,
-      width: double.maxFinite,
-      child: Column(
-        children: [
-          Container(
-            height: 50,
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Project Portfolio",
-              style: ubuntuTextStyle.copyWith(
-                fontSize: 25,
-                fontWeight: FontWeight.w600,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 15),
+      child: SizedBox(
+        height: 300,
+        child: Row(
+          children: [
+            SizedBox(
+              width: Get.width / 6,
+              height: double.infinity,
+              child: Image.network(
+                "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-          Flexible(
-            flex: 2,
-            child: Container(
-              color: Colors.blue,
-              child: Stack(
-                alignment: Alignment.center,
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.network(
-                    "https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80",
-                    fit: BoxFit.cover,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Project Name",
+                        style: ubuntuTextStyle.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Stack: ",
+                              style: ubuntuTextStyle,
+                            ),
+                            TextSpan(
+                              text: "Flutter, Firebase & GetX",
+                              style: quicksandTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                      RichText(
+                        maxLines: 6,
+                        overflow: TextOverflow.ellipsis,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Description: ",
+                              style: ubuntuTextStyle,
+                            ),
+                            TextSpan(
+                              text:
+                                  "A full-stack Instagram Clone using Flutter, Firebase & Provider with built-in image compression and cropping facility. Users can log in/ signup,  post/ upload stories & memories, and can even post comments/ react on them. Users can also follow/ unfollow each other, chat ( Upcoming in V3.00 ), and even explore other users' posts and galleries ( Private/ Privacy profile coming in V3.00 ).",
+                              style: quicksandTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(FontAwesomeIcons.youtube),
-                        const SizedBox(
-                          width: 8,
+                  Wrap(
+                    runSpacing: 8,
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
                         ),
-                        Text(
-                          "Play on Youtube",
-                          style: quicksandTextStyle.copyWith(
-                            color: white,
-                          ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 10,
                         ),
-                      ],
-                    ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              FontAwesomeIcons.youtube,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "Watch on Youtube",
+                              style: ubuntuTextStyle.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 10,
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              FontAwesomeIcons.download,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "Download APK",
+                              style: ubuntuTextStyle.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.black,
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 10,
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              FontAwesomeIcons.github,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "View on Github",
+                              style: ubuntuTextStyle.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
-            ),
-          ),
-          Flexible(
-            flex: 1,
-            child: SizedBox(
-              width: double.maxFinite,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Platform: ",
-                            style: ubuntuTextStyle,
-                          ),
-                          TextSpan(
-                            text: "Android/IOS",
-                            style: quicksandTextStyle.copyWith(
-                              fontSize: 15,
-                            ),
-                          ),
-                          TextSpan(
-                            text: " - Coded with: ",
-                            style: ubuntuTextStyle,
-                          ),
-                          TextSpan(
-                            text: "Flutter and Firebase",
-                            style: quicksandTextStyle.copyWith(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Status: ",
-                            style: ubuntuTextStyle,
-                          ),
-                          TextSpan(
-                            text: "Under development",
-                            style: quicksandTextStyle.copyWith(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    RichText(
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Description: ",
-                            style: ubuntuTextStyle,
-                          ),
-                          TextSpan(
-                            text:
-                                "Description: A full-stack Instagram Clone using Flutter, Firebase & Provider with built-in image compression and cropping facility. Users can log in/ signup,  post/ upload stories & memories, and can even post comments/ react on them. Users can also follow/ unfollow each other, chat ( Upcoming in V3.00 ), and even explore other users' posts and galleries ( Private/ Privacy profile coming in V3.00 ).",
-                            style: quicksandTextStyle.copyWith(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
