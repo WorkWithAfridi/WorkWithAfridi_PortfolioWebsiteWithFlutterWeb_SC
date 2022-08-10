@@ -67,6 +67,8 @@ class _HomepageState extends State<Homepage> {
                                 const CustomDivider(),
                                 const ShowProjectsModule(),
                                 const CustomDivider(),
+                                const PublishedPackagesModule(),
+                                const CustomDivider(),
                                 Container(
                                   width: Get.width,
                                   padding: EdgeInsets.symmetric(
@@ -76,39 +78,28 @@ class _HomepageState extends State<Homepage> {
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        "Published Flutter/ Dart packages or plugins",
-                                        style: ubuntuTextStyle.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
+                                      RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: "Experience - ",
+                                              style: ubuntuTextStyle.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  "Coding & Programming related skills.",
+                                              style:
+                                                  quicksandTextStyle.copyWith(
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "SelectCropCompressImage",
-                                            style: ubuntuTextStyle.copyWith(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Text(
-                                            "- A package to select, crop and compress images all through one call. Image selection is done via Image Picker package, Image Cropping is achieved through the Image Copper package and finally the compression is done using the Flutter Image Compress package. ",
-                                            style: quicksandTextStyle.copyWith(
-                                              fontSize: 15,
-                                            ),
-                                          )
-                                        ],
-                                      )
                                     ],
                                   ),
                                 )
@@ -129,6 +120,58 @@ class _HomepageState extends State<Homepage> {
                   ),
           );
         },
+      ),
+    );
+  }
+}
+
+class PublishedPackagesModule extends StatelessWidget {
+  const PublishedPackagesModule({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width,
+      padding: EdgeInsets.symmetric(
+        vertical: 50,
+        horizontal: Get.width / 7,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            "Published Flutter/ Dart packages or plugins",
+            style: ubuntuTextStyle.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "SelectCropCompressImage",
+                style: ubuntuTextStyle.copyWith(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                "- A package to select, crop and compress images all through one call. Image selection is done via Image Picker package, Image Cropping is achieved through the Image Copper package and finally the compression is done using the Flutter Image Compress package. ",
+                style: quicksandTextStyle.copyWith(
+                  fontSize: 15,
+                ),
+              )
+            ],
+          )
+        ],
       ),
     );
   }
@@ -271,81 +314,83 @@ class _ProjectCardState extends State<ProjectCard> {
             flex: 1,
             child: SizedBox(
               width: double.maxFinite,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Platform: ",
-                          style: ubuntuTextStyle,
-                        ),
-                        TextSpan(
-                          text: "Android/IOS",
-                          style: quicksandTextStyle.copyWith(
-                            fontSize: 15,
-                          ),
-                        ),
-                        TextSpan(
-                          text: " - Coded with: ",
-                          style: ubuntuTextStyle,
-                        ),
-                        TextSpan(
-                          text: "Flutter and Firebase",
-                          style: quicksandTextStyle.copyWith(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 10,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Status: ",
-                          style: ubuntuTextStyle,
-                        ),
-                        TextSpan(
-                          text: "Under development",
-                          style: quicksandTextStyle.copyWith(
-                            fontSize: 15,
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Platform: ",
+                            style: ubuntuTextStyle,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  RichText(
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 5,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Description: ",
-                          style: ubuntuTextStyle,
-                        ),
-                        TextSpan(
-                          text:
-                              "Description: A full-stack Instagram Clone using Flutter, Firebase & Provider with built-in image compression and cropping facility. Users can log in/ signup,  post/ upload stories & memories, and can even post comments/ react on them. Users can also follow/ unfollow each other, chat ( Upcoming in V3.00 ), and even explore other users' posts and galleries ( Private/ Privacy profile coming in V3.00 ).",
-                          style: quicksandTextStyle.copyWith(
-                            fontSize: 15,
+                          TextSpan(
+                            text: "Android/IOS",
+                            style: quicksandTextStyle.copyWith(
+                              fontSize: 15,
+                            ),
                           ),
-                        ),
-                      ],
+                          TextSpan(
+                            text: " - Coded with: ",
+                            style: ubuntuTextStyle,
+                          ),
+                          TextSpan(
+                            text: "Flutter and Firebase",
+                            style: quicksandTextStyle.copyWith(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Status: ",
+                            style: ubuntuTextStyle,
+                          ),
+                          TextSpan(
+                            text: "Under development",
+                            style: quicksandTextStyle.copyWith(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    RichText(
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Description: ",
+                            style: ubuntuTextStyle,
+                          ),
+                          TextSpan(
+                            text:
+                                "Description: A full-stack Instagram Clone using Flutter, Firebase & Provider with built-in image compression and cropping facility. Users can log in/ signup,  post/ upload stories & memories, and can even post comments/ react on them. Users can also follow/ unfollow each other, chat ( Upcoming in V3.00 ), and even explore other users' posts and galleries ( Private/ Privacy profile coming in V3.00 ).",
+                            style: quicksandTextStyle.copyWith(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
