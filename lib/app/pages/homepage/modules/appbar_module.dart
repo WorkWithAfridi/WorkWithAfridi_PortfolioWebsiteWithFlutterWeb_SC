@@ -41,9 +41,9 @@ class HomepageAppbarMobule extends StatelessWidget {
                   ),
                   Text(
                     "Khondakar Afridi",
-                    style: quicksandTextStyle.copyWith(
+                    style: ubuntuBold30.copyWith(
                       color: white,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
                     ),
                   )
                 ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:workwithafridi/app/data/constants/text_style.dart';
 import 'package:workwithafridi/app/pages/homepage/homepage_controller.dart';
@@ -100,6 +101,39 @@ class _HomepageState extends State<Homepage> {
                                           ],
                                         ),
                                       ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      GridView(
+                                        shrinkWrap: true,
+                                        physics: const BouncingScrollPhysics(),
+                                        gridDelegate: SliverQuiltedGridDelegate(
+                                          crossAxisCount: 2,
+                                          mainAxisSpacing: 25,
+                                          crossAxisSpacing: 25,
+                                          pattern: [
+                                            const QuiltedGridTile(1, 1),
+                                            const QuiltedGridTile(1, 1),
+                                          ],
+                                        ),
+                                        children: [
+                                          Container(
+                                            height: double.maxFinite,
+                                            width: double.maxFinite,
+                                            color: Colors.amber,
+                                          ),
+                                          Container(
+                                            height: double.maxFinite,
+                                            width: double.maxFinite,
+                                            color: Colors.amber,
+                                          ),
+                                          Container(
+                                            height: double.maxFinite,
+                                            width: double.maxFinite,
+                                            color: Colors.amber,
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ),
                                 )

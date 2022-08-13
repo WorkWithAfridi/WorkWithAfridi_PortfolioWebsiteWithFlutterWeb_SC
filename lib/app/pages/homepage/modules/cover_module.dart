@@ -54,62 +54,69 @@ class HomepageCoverModule extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 200.0,
-                        vertical: 100.00,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "a ",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                              ),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 200.0,
+                            vertical: 100.00,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "a ",
+                                  style: quickSandRegular.copyWith(
+                                    color: white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "CODE ",
+                                  style: ubuntuBold30.copyWith(color: white),
+                                ),
+                                TextSpan(
+                                  text: "a day,\n",
+                                  style: quickSandRegular.copyWith(
+                                    color: white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "keeps the ",
+                                  style: quickSandRegular.copyWith(
+                                    color: white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "BUG ",
+                                  style: ubuntuBold30.copyWith(color: white),
+                                ),
+                                TextSpan(
+                                  text: "away!",
+                                  style: quickSandRegular.copyWith(
+                                    color: white,
+                                  ),
+                                ),
+                              ],
                             ),
-                            TextSpan(
-                              text: "CODE ",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "a day,\n",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "keeps the ",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "BUG ",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            TextSpan(
-                              text: "away!",
-                              style: quicksandTextStyle.copyWith(
-                                color: white,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        Positioned(
+                          bottom: 30,
+                          child: Text(
+                            "Made with 🔥, using Flutter WEB! - Kyoto",
+                            style: quickSandRegular.copyWith(
+                              color: white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -117,7 +124,7 @@ class HomepageCoverModule extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 10,
+            bottom: 5,
             left: 0,
             right: 0,
             child: GestureDetector(

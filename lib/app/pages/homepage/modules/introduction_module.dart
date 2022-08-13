@@ -29,14 +29,11 @@ class IntroductionModule extends StatelessWidget {
             children: [
               Text(
                 "Who am I?",
-                style: ubuntuTextStyle.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
+                style: ubuntuBold30,
               ),
               Text(
                 "Hi, I'm Khondakar Afridi, a part-time Youtuber, a part-time gamer, and a full-time programmer.\nThe Internet people know me as Kyoto, a self-taught software engineer and an app developer located in Dhaka, Bangladesh.",
-                style: quicksandTextStyle,
+                style: quickSandRegular,
               )
             ],
           ),
@@ -49,14 +46,11 @@ class IntroductionModule extends StatelessWidget {
             children: [
               Text(
                 "Education",
-                style: ubuntuTextStyle.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
+                style: ubuntuBold30,
               ),
               Text(
                 "I have completed my O'levels and A'levels under British Council Bangladesh, and my Bachelor's in Computer Science and Engineering from Independent University Bangladesh.",
-                style: quicksandTextStyle,
+                style: quickSandRegular,
               )
             ],
           ),
@@ -69,14 +63,11 @@ class IntroductionModule extends StatelessWidget {
             children: [
               Text(
                 "What do I do?",
-                style: ubuntuTextStyle.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
+                style: ubuntuBold30,
               ),
               Text(
                 "I build/make full-stack cross-platform Android, IOS, Web, and Windows apps/softwares using Flutter. :)\na.k.a - Full Stack Flutter Developer.",
-                style: quicksandTextStyle,
+                style: quickSandRegular,
               )
             ],
           ),

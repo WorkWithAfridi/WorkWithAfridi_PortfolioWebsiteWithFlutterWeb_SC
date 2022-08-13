@@ -25,11 +25,14 @@ class AppbarTab extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: quicksandTextStyle.copyWith(
-                  color: white,
+                style: quickSandRegular.copyWith(
+                  color: controller.currentPage.value == title
+                      ? white
+                      : white.withOpacity(.7),
                   fontWeight: controller.currentPage.value == title
                       ? FontWeight.w700
                       : FontWeight.normal,
+                  fontSize: controller.currentPage.value == title ? 20 : 16,
                 ),
               ),
               controller.currentPage.value == title

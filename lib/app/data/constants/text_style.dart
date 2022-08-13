@@ -15,3 +15,10 @@ TextStyle ubuntuTextStyle = GoogleFonts.ubuntu(
   fontSize: 18,
   color: grey,
 );
+
+TextStyle ubuntuBold30 = ubuntuTextStyle.copyWith(
+  fontWeight: FontWeight.bold,
+  fontSize: 30,
+);
+
+TextStyle quickSandRegular = quicksandTextStyle;
